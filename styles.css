@@ -1,0 +1,269 @@
+/* General Styles */
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+    font-family: Arial, sans-serif;
+}
+
+body {
+    background-color: #f5f5f5;
+    padding: 20px;
+}
+
+.game-container {
+    max-width: 900px;
+    margin: 0 auto;
+    background-color: #fff;
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+h1 {
+    text-align: center;
+    margin-bottom: 20px;
+    color: #333;
+}
+
+/* Game Info */
+.game-info {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 20px;
+    padding: 10px;
+    background-color: #f0f0f0;
+    border-radius: 5px;
+}
+
+#current-player {
+    font-size: 18px;
+    font-weight: bold;
+}
+
+.dice-container {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.dice {
+    width: 40px;
+    height: 40px;
+    background-color: white;
+    border: 1px solid #333;
+    border-radius: 5px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 20px;
+    font-weight: bold;
+}
+
+/* Board Styles */
+.board-container {
+    margin-bottom: 20px;
+}
+
+.board {
+    display: flex;
+    flex-direction: row;
+    height: 500px;
+    background-color: #8B4513;
+    border: 10px solid #5D3A1A;
+    border-radius: 5px;
+    position: relative;
+}
+
+.quadrant {
+    flex: 1;
+    display: flex;
+}
+
+.quadrant.top {
+    flex-direction: row-reverse;
+}
+
+.quadrant.bottom {
+    flex-direction: row;
+}
+
+.point {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    position: relative;
+}
+
+.point.dark {
+    background-color: #8B4513;
+}
+
+.point.light {
+    background-color: #D2B48C;
+}
+
+.triangle {
+    width: 100%;
+    height: 45%;
+    position: relative;
+    overflow: hidden;
+}
+
+.triangle:before {
+    content: '';
+    position: absolute;
+    width: 100%;
+    height: 200%;
+    left: 0;
+}
+
+.top .triangle:before {
+    bottom: 0;
+    clip-path: polygon(0 100%, 50% 0, 100% 100%);
+}
+
+.bottom .triangle:before {
+    top: 0;
+    clip-path: polygon(0 0, 50% 100%, 100% 0);
+}
+
+.dark .triangle:before {
+    background-color: #5D3A1A;
+}
+
+.light .triangle:before {
+    background-color: #D2B48C;
+}
+
+.bar {
+    width: 60px;
+    height: 100%;
+    background-color: #5D3A1A;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
+.checker {
+    width: 32px;
+    height: 32px;
+    border-radius: 50%;
+    border: 1px solid #333;
+    margin: 2px;
+    z-index: 10;
+    cursor: pointer;
+    transition: transform 0.2s;
+}
+
+.checker.white {
+    background-color: #fff;
+}
+
+.checker.black {
+    background-color: #333;
+}
+
+.checker.selectable {
+    box-shadow: 0 0 5px 2px rgba(0, 255, 0, 0.7);
+}
+
+.checker.selected {
+    transform: scale(1.15);
+    box-shadow: 0 0 10px 3px rgba(255, 215, 0, 0.7);
+}
+
+.point-label {
+    position: absolute;
+    font-size: 10px;
+    color: #eee;
+    z-index: 5;
+}
+
+.top .point-label {
+    top: 5px;
+}
+
+.bottom .point-label {
+    bottom: 5px;
+}
+
+.valid-move {
+    position: absolute;
+    width: 30px;
+    height: 30px;
+    border-radius: 50%;
+    background-color: rgba(0, 255, 0, 0.3);
+    z-index: 5;
+}
+
+.home {
+    width: 60px;
+    height: 100%;
+    background-color: #D2B48C;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 10px 0;
+}
+
+.home-label {
+    font-weight: bold;
+    margin-bottom: 10px;
+}
+
+/* Game Controls */
+.game-controls {
+    display: flex;
+    justify-content: center;
+    gap: 20px;
+}
+
+button {
+    padding: 8px 16px;
+    background-color: #4CAF50;
+    color: white;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    font-size: 16px;
+}
+
+button:hover {
+    background-color: #45a049;
+}
+
+button:disabled {
+    background-color: #cccccc;
+    cursor: not-allowed;
+}
+
+/* Media Queries */
+@media (max-width: 768px) {
+    .board {
+        height: 400px;
+    }
+    
+    .checker {
+        width: 25px;
+        height: 25px;
+    }
+}
+
+@media (max-width: 480px) {
+    .board {
+        height: 300px;
+    }
+    
+    .game-info {
+        flex-direction: column;
+        gap: 10px;
+    }
+    
+    .checker {
+        width: 20px;
+        height: 20px;
+    }
+}
